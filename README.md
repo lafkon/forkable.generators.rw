@@ -17,9 +17,10 @@
     Medialab Prado | Madrid |  10-13 April
 
 
---------------------------------------
+----
 
-This setup was created for LGM 2013
+This setup was created for LGM 2013.
+Chances are high it won't work out of the box.
 
 
 

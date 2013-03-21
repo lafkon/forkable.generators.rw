@@ -1,0 +1,261 @@
+/* WEBFONTS -----------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'Sniglet-webfont';
+    src: url('i/free/fonts/SerreriaSobria.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* GENERAL STUFF ------------------------------------------------------------*/
+
+* { 
+	margin: 0; 
+}
+
+html { 
+	height: 100%; 
+	margin-bottom: -1px; 
+}
+
+html, body {
+    background-color: #DDD;
+    font-family: sans;
+    color: #000000;
+    text-decoration: none;
+    word-spacing: normal;
+    text-align: left;
+    letter-spacing: 0;
+    line-height: 1.5em;
+    font-size: 10px;
+}
+
+img {
+	border-width: 0px;
+}
+
+
+/* LOGO & CONTROLS ----------------------------------------------------------*/
+
+div.logo {
+    position: absolute;
+	left: 45%; 
+	top: 32px;
+	width: 30%;
+    height: 30%;
+	background-color: transparent;
+	padding: 0px;
+	z-index: 5;
+}
+ 
+img.logo {
+	position: absolute;
+	right: -16px;
+}
+
+div.controls {
+	position: absolute;
+	left: 44%;
+	top: 27%;
+    z-index:30;
+    width: 170px;
+    background-color: transparent;
+}
+ 
+div.controls a.read {
+	display:block;
+	width:170px; 
+	height:50px;
+    background-image:url('i/free/png/interface/read_over.png');
+	margin: 0px 0px 4px 40px;
+}
+
+div.controls a.read:hover {
+	background: url('i/free/png/interface/read.png')
+}
+
+
+/* QUESTION & ANSWER --------------------------------------------------------*/
+
+textarea {
+	resize: none;
+	outline: none; 
+	padding: 10px;
+}
+
+div.questionbg {
+    position: relative;
+	width: 50%;
+    height: 40%;
+	background-color: transparent;
+	padding: 10px;
+	margin: 30px;
+	z-index: 12;
+}
+
+textarea.question {
+    position: absolute;
+	left: 30px; 
+	top: 30px;
+	width: 50%;
+    height: 40%; 
+    margin: 10px;
+    padding: 10px 30px 10px 10px;
+    background-color: #FFFFFF;
+	font-family: Sniglet-webfont;
+	font-size: 35px;
+	border-width: 2px;
+	border-color: #000000;
+	border-style: solid;
+  	z-index: 15;
+  	line-height: 40px;
+
+}
+
+div.answerbg {
+    position: absolute;
+	left: 45%; 
+	top: 35%;
+	width: 30%;
+    height: 30%;
+	background-color: transparent;
+	padding: 10px;
+	z-index: 13;
+}
+ 
+textarea.answer  {
+    position: absolute;
+	left: 45%; 
+	top: 35%;
+	width: 30%;
+    height: 30%;
+	margin: 10px 10px 10px 10px;
+    padding: 30px 10px 10px 10px;
+	font-family: Consolas;
+	font-size: 16px;
+	z-index: 16;
+	background-color: #FFF;
+	border-width: 2px;
+	border-color: #000000;
+	border-style: solid;
+}
+
+
+/* PEOPLE -------------------------------------------------------------------*/
+
+div.people {
+    position: relative;
+	width: 100%;
+    height: 30%;
+    right: 55%;
+	background-color: transparent;
+	z-index: 20;
+	margin: -42px 0px 0px 11px;
+}
+
+img.talkL {
+	position: absolute;
+	top: 0px;
+	right: 10%;
+	z-index: 22;
+}
+
+img.talkR {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 23;
+}
+
+
+/* ALL ANSWERS $ POSTERLINKS ------------------------------------------------*/
+
+div.allanswers {
+    position: absolute;
+	left: 45%; 
+	top: 68%;
+	width: 30%;
+    padding: 2px 10px 10px 10px;
+}
+
+div.allanswers div {
+	font-size: 14px;
+	height: auto;	
+	background-color: #FFF;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-width: 2px;
+	border-color: #000;
+	border-style: solid;
+}
+
+div.answer_0 {
+	font-family: serif;
+}
+div.answer_1 {
+	font-family: sans-serif;
+}
+div.answer_2 {
+	font-family: monospace;
+}
+div.answer_3 {
+	font-family: Sniglet-webfont;
+}
+
+div.allanswers div.pluslinks {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: sans;
+	background-color: #000;
+	color: #fff;
+	border-width: 2px;	
+	text-decoration: underline;
+}
+ 
+div.allanswers a {
+	border-width: 2px;
+	color: #fff; 
+	text-decoration: none;
+} 
+
+div.allanswers a:hover {
+	color: #00a651;
+	border-color: #fff;
+	border-width: 2px;
+	text-decoration: none;
+}
+
+
+/* ALLVOICES ----------------------------------------------------------------*/
+ 
+ div.allvoices {
+    font-family: serif;
+    color: #000000;
+    line-height: 1.5em;
+    font-size: 16px;
+ }
+
+ div.allvoices h2 {
+    font-family: sans;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: -26px;
+ }
+
+ div.allvoices ul {
+    margin-left: -40px;
+ }
+
+ div.allvoices a {
+    color: #000;
+ }
+
+ div.allvoices a:hover {
+    color: #00a651;
+ }
+ 
+ 
+ 
+ a.smalllink {
+     font-size: 10px;
+ }

@@ -1,16 +1,15 @@
 import geomerative.*;
 import processing.pdf.*;
 
-
-RFont mfont;
-RShape mshape;
-RGroup mgroup;
-RPoint[][] mpoints;
+ RFont lfont;
+RShape lshape;
+RGroup lgroup;
+RPoint[][] lpoints;
 RMatrix mat;
 
 PShape[] ImaginaryTools;
 
-String mtext[] = loadStrings("i/free/voice/voice.txt");
+String ltext[] = loadStrings("i/free/voice/voice.txt");
 String svglist[] = loadStrings("i/free/svg/load.list");
 
 float x,y,xprev,yprev,randy,a;
@@ -32,20 +31,20 @@ void setup() {
   noLoop();
 
   RG.init(this);
-  mfont = new RFont("i/free/fonts/SerreriaSobria.ttf", 500, LEFT);
+  lfont = new RFont("i/free/fonts/SerreriaSobria.ttf", 500, LEFT);
   mat = new RMatrix();
 
   ImaginaryTools = new PShape[svglist.length];
 
-  mshape = mfont.toShape(mtext[0]);
+  lshape = lfont.toShape(ltext[0]);
 
   // MULTILINE HACK FOR TEXT & GEOMERATIVE //
-  for(int i = 1; i < mtext.length; i++) {
-    mshape.addChild(mfont.toShape(mtext[i]));
+  for(int i = 1; i < ltext.length; i++) {
+    lshape.addChild(lfont.toShape(ltext[i]));
     mat.translate(0,textHeight);
-    mshape.children[int(mshape.countChildren() - 1)].transform(mat);
+    lshape.children[int(lshape.countChildren() - 1)].transform(mat);
   }
-  mpoints = mshape.getPointsInPaths();
+  lpoints = lshape.getPointsInPaths();
 
   for(int i = 0; i < svglist.length; i++) {
     ImaginaryTools[i] = loadShape(svglist[i]);
@@ -53,7 +52,7 @@ void setup() {
   }
   shapeMode(CENTER);
 
-  scalefactor = width/(mshape.getWidth() * 1.2);
+  scalefactor = width/(lshape.getWidth() * 1.2);
 
   for(int i = 0; i < alreadytaken.length; i++) {
       alreadytaken[i] = 0;
@@ -74,17 +73,17 @@ void draw() {
   fill(255,0,0);
   stroke(0);
 
-  for (int i = 0; i < mpoints.length; i++) {
+  for (int i = 0; i < lpoints.length; i++) {
     
-    RPoint[] ppoints = mpoints[i];
+    RPoint[] llpoints = lpoints[i];
  
-    indent = int(random(10,ppoints.length/15));
-    for (int j = 0; j <= ppoints.length-indent; j++) {
+    indent = int(random(10,llpoints.length/15));
+    for (int j = 0; j <= llpoints.length-indent; j++) {
       
       xprev = x;
       yprev = y; 
-      x = int(ppoints[j].x);
-      y = int(ppoints[j].y);
+      x = int(llpoints[j].x);
+      y = int(llpoints[j].y);
 
       randy = random(y-1400,
                      height / (scalefactor*1.9));
@@ -108,7 +107,7 @@ void draw() {
         vertex(x,y);
         }
       }
-      else if ( ( j == ppoints.length-indent ) ) {
+      else if ( ( j == llpoints.length-indent ) ) {
         if ( random(0,10) > 9 ) {
         vertex(xprev,yprev);
         vertex(xprev,randy);

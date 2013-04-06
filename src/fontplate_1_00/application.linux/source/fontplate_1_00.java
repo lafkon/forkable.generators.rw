@@ -20,16 +20,15 @@ public class fontplate_1_00 extends PApplet {
 
 
 
-
-RFont mfont;
-RShape mshape;
-RGroup mgroup;
-RPoint[][] mpoints;
+ RFont lfont;
+RShape lshape;
+RGroup lgroup;
+RPoint[][] lpoints;
 RMatrix mat;
 
 PShape[] ImaginaryTools;
 
-String mtext[] = loadStrings("i/free/voice/voice.txt");
+String ltext[] = loadStrings("i/free/voice/voice.txt");
 String svglist[] = loadStrings("i/free/svg/load.list");
 
 float x,y,xprev,yprev,randy,a;
@@ -51,20 +50,20 @@ public void setup() {
   noLoop();
 
   RG.init(this);
-  mfont = new RFont("i/free/fonts/SerreriaSobria.ttf", 500, LEFT);
+  lfont = new RFont("i/free/fonts/SerreriaSobria.ttf", 500, LEFT);
   mat = new RMatrix();
 
   ImaginaryTools = new PShape[svglist.length];
 
-  mshape = mfont.toShape(mtext[0]);
+  lshape = lfont.toShape(ltext[0]);
 
   // MULTILINE HACK FOR TEXT & GEOMERATIVE //
-  for(int i = 1; i < mtext.length; i++) {
-    mshape.addChild(mfont.toShape(mtext[i]));
+  for(int i = 1; i < ltext.length; i++) {
+    lshape.addChild(lfont.toShape(ltext[i]));
     mat.translate(0,textHeight);
-    mshape.children[PApplet.parseInt(mshape.countChildren() - 1)].transform(mat);
+    lshape.children[PApplet.parseInt(lshape.countChildren() - 1)].transform(mat);
   }
-  mpoints = mshape.getPointsInPaths();
+  lpoints = lshape.getPointsInPaths();
 
   for(int i = 0; i < svglist.length; i++) {
     ImaginaryTools[i] = loadShape(svglist[i]);
@@ -72,7 +71,7 @@ public void setup() {
   }
   shapeMode(CENTER);
 
-  scalefactor = width/(mshape.getWidth() * 1.2f);
+  scalefactor = width/(lshape.getWidth() * 1.2f);
 
   for(int i = 0; i < alreadytaken.length; i++) {
       alreadytaken[i] = 0;
@@ -93,17 +92,17 @@ public void draw() {
   fill(255,0,0);
   stroke(0);
 
-  for (int i = 0; i < mpoints.length; i++) {
+  for (int i = 0; i < lpoints.length; i++) {
     
-    RPoint[] ppoints = mpoints[i];
+    RPoint[] llpoints = lpoints[i];
  
-    indent = PApplet.parseInt(random(10,ppoints.length/15));
-    for (int j = 0; j <= ppoints.length-indent; j++) {
+    indent = PApplet.parseInt(random(10,llpoints.length/15));
+    for (int j = 0; j <= llpoints.length-indent; j++) {
       
       xprev = x;
       yprev = y; 
-      x = PApplet.parseInt(ppoints[j].x);
-      y = PApplet.parseInt(ppoints[j].y);
+      x = PApplet.parseInt(llpoints[j].x);
+      y = PApplet.parseInt(llpoints[j].y);
 
       randy = random(y-1400,
                      height / (scalefactor*1.9f));
@@ -127,7 +126,7 @@ public void draw() {
         vertex(x,y);
         }
       }
-      else if ( ( j == ppoints.length-indent ) ) {
+      else if ( ( j == llpoints.length-indent ) ) {
         if ( random(0,10) > 9 ) {
         vertex(xprev,yprev);
         vertex(xprev,randy);

@@ -90,7 +90,7 @@ if [ `ps aux | grep Xvfb | grep -v grep | wc -l` -ge 1 ]; then
 # ------------------------------------------------------------------------------------------ #
 
   TIMEREFERENCE=older.tmp
-  touch -t 201302190000 $TIMEREFERENCE
+  touch -t 201303190000 $TIMEREFERENCE
 
   ALLHTML=$PDFDIR/HYPERSEEME.htm
 
@@ -121,10 +121,16 @@ if [ `ps aux | grep Xvfb | grep -v grep | wc -l` -ge 1 ]; then
 
         HTMLFILE=${PDFDIR}/${HTMLNAME}.html
         #echo ; echo $HTMLFILE 
+        
+        QFILE=`ls $VOICEDIR/*Q.txt | grep $QTYPE `
 
-        TITLE=`cat \`ls $VOICEDIR/*Q.txt | grep $QTYPE \``
+        if [ `echo $QFILE | wc -c` -gt 2 ];then
+        TITLE=`cat $QFILE`
         #echo $TITLE
-  
+        else
+        TITLE=0  
+        fi
+
         echo "<html>"                                                    >  $HTMLFILE
         echo "<head>"                                                    >> $HTMLFILE
         echo "<link rel=\"stylesheet\""                                  >> $HTMLFILE
@@ -146,9 +152,11 @@ if [ `ps aux | grep Xvfb | grep -v grep | wc -l` -ge 1 ]; then
             echo "<img src=\""$GIF"\" />"                                >> $HTMLFILE
             echo "</a>"                                                  >> $HTMLFILE
        
-            AOPEN="<a href=\""${GIF%%.*}.pdf"\">"
+
+            #AOPEN="<a href=\""${GIF%%.*}.pdf"\">"
+            AOPEN="<a href=\""${HTMLNAME}.html"\">"
             ACLOSE="</a>"
-            echo "$AOPEN<img src=\""$GIF"\" />$ACLOSE"                  >> $ALLHTML.tmp
+            echo "$AOPEN<img src=\""$GIF"\" />$ACLOSE"                   >> $ALLHTML.tmp
 
         done
 
@@ -156,9 +164,12 @@ if [ `ps aux | grep Xvfb | grep -v grep | wc -l` -ge 1 ]; then
         echo "</html>"                                                   >> $HTMLFILE
       fi
  done
+        #cat $ALLHTML.tmp | \
+        #uniq --skip-chars=18 --check-chars=7 | head -n 50               >> $ALLHTML
+        #cat $ALLHTML.tmp | shuf -n 100                                   >> $ALLHTML
+
         cat $ALLHTML.tmp | \
-        uniq --skip-chars=18 --check-chars=7 | head -n 50                >> $ALLHTML
-        cat $ALLHTML.tmp | shuf -n 100                                   >> $ALLHTML
+        uniq --skip-chars=9 --check-chars=30                             >> $ALLHTML
         echo "</body>"                                                   >> $ALLHTML
         echo "</html>"                                                   >> $ALLHTML
 
@@ -208,7 +219,6 @@ if [ `ps aux | grep Xvfb | grep -v grep | wc -l` -ge 1 ]; then
 #  ACCESS=`cat ~/.forkable/wput.input` 
 #  wput --timestamping --basename=$PDFDIR/ $PDFDIR/*.* ftp://$ACCESS@forkable.eu
 #  rm q+a.list
-
 
 # ------------------------------------------------------------------------------------------ #
 
